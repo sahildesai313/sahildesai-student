@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def profile(request):
+    if "username" not in request.session:
+        return redirect("login")
     if request.method == "POST":
         username=request.POST.get('username')
         firstname= request.POST.get('firstname')
@@ -25,32 +27,43 @@ def profile(request):
         except Register.DoesNotExist:
             print(mymember)
         return redirect('/login')
-    return render(request,"profile.html")
+    user_data = Register.objects.get(username=request.session["username"])
+    return render(request, "profile.html", context={"mymember": user_data})
 
 
 def login(request):
+    context = {}
+    print("login")
+    if "username" in request.session:
+        print("test")
+        return redirect("home")
+    print(request.method)
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        user = Register.objects.get(username=username,password=password)
-        if user is not None:
+        print("this")
+        print(username, password)
+        user = Register.objects.filter(username=username, password=password)
+        if user.exists():
           
             messages.success(request, 'Successfully Logged In')
-            return redirect('/home')
+            print("login")
+            request.session["username"] = username
+            return redirect('home')
 
         else:
-            return HttpResponse("hiii")
-            
-            messages.error(request, 'Invalid USER ID') 
-    return render(request,'login.html')
+            context["error"] = "Invalid username or password"
+    return render(request,'login.html', context=context)
 
 
-@login_required(login_url='/')
-def logout(request):
+def logout(request):    
+    del request.session["username"]
     return redirect('login')
 
 
 def forgot(request):
+    if "username" in request.session:
+        return redirect("home")
     if request.method == "POST":
         username = request.POST.get('username')
         code = 1234
@@ -71,33 +84,10 @@ def forgot(request):
     return render(request, 'forgot.html')
 
 
-# def register(request):
-#      if request.method=="POST":
-#         username=request.POST.get('username')
-#         firstname=request.POST.get('firstname')
-#         lastname=request.POST.get('lastname')
-#         phone=request.POST.get('phone')
-#         email=request.POST.get('email')
-#         password=request.POST.get('password')
-#         confirmpassword=request.POST.get('confirmpassword')
-#         if Register.objects.filter(username=username).exists():
-#             return HttpResponse("user name is already extsts")
-
-#         if len(phone) != 10:
-#             return HttpResponse("number not a valid")
-#         if password!=confirmpassword:
-#             return HttpResponse("password did't match")
-#         else:
-
-            
-#             register = Register(username=username,firstname=firstname,lastname=lastname,phone=phone,email=email,password=password,confirmpassword=confirmpassword)
-#             register.save()
-            
-       
-#             return redirect ('/')
-#      return render(request,'register.html')  
 def register(request):
-     if request.method=="POST":
+    if "username" in request.session:
+        return redirect("home")
+    if request.method=="POST":
         username=request.POST.get('username')
         firstname=request.POST.get('firstname')
         lastname=request.POST.get('lastname')
@@ -112,17 +102,24 @@ def register(request):
             return HttpResponse("number not a valid")
         if password!=confirmpassword:
             return HttpResponse("password did't match")
-        else:
-
-            
+        else:     
             register = Register(username=username,firstname=firstname,lastname=lastname,phone=phone,email=email,password=password,confirmpassword=confirmpassword)
             register.save()
             
        
             return redirect ('/')
-     return render(request,'register.html')  
+    return render(request,'register.html')  
 
-def home(request):
+def homepage(request):
     # user= Register.objects.all().values()
     # print(user)
-    return render(request,'home.html')
+
+    if "username" not in request.session:
+        return redirect("login")
+
+    print("user")
+    print(request.session["username"])
+
+    user_data = Register.objects.get(username=request.session["username"])
+
+    return render(request, 'home.html', context={"user": user_data})
