@@ -15,7 +15,7 @@ def login(request):
         if user is not None:
           
             messages.success(request, 'Successfully Logged In')
-            return redirect('/home')
+            return redirect('home')
 
         else:
             return HttpResponse("hiii")
