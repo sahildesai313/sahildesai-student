@@ -121,3 +121,8 @@ def register(request):
        
             return redirect ('/')
      return render(request,'register.html')  
+
+def home(request):
+    # user= Register.objects.all().values()
+    # print(user)
+    return render(request,'home.html')
