@@ -6,6 +6,27 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def profile(request):
+    if request.method == "POST":
+        username=request.POST.get('username')
+        firstname= request.POST.get('firstname')
+        lastname= request.POST.get('lastname')
+        phone=request.POST.get('phone')
+        try:
+            mymember = Register.objects.get(username=username)
+            newfname=firstname
+            newlname=lastname
+            newphone=phone
+            mymember.firstname=newfname
+            mymember.lastname=newlname
+            mymember.phone=newphone
+            mymember.save()
+            return redirect('/home')
+        except Register.DoesNotExist:
+            print(mymember)
+        return redirect('/login')
+    return render(request,"profile.html")
+
 
 def login(request):
     if request.method == "POST":
