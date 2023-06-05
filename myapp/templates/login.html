@@ -19,6 +19,7 @@
          <div class="title">
             Login Form
          </div>
+         <p style="text-align: center;margin-top: 27px;color: red;">{{error}}</p>
          <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <div class="field">
@@ -39,7 +40,7 @@
                </div>
             </div>
             <div class="field">
-               <input type="submit" value="Login">
+               <input type="submit" value="home">
             </div>
             <div class="signup-link">
                Not a member? <a href="/reg/">Signup now</a>
