@@ -24,7 +24,7 @@ def profile(request):
             return redirect('/home')
         except Register.DoesNotExist:
             print(mymember)
-        return redirect('/')
+        return redirect('/login')
     return render(request,"profile.html")
 
 
@@ -36,7 +36,7 @@ def login(request):
         if user is not None:
           
             messages.success(request, 'Successfully Logged In')
-            return redirect('home')
+            return redirect('/home')
 
         else:
             return HttpResponse("hiii")
@@ -71,6 +71,31 @@ def forgot(request):
     return render(request, 'forgot.html')
 
 
+# def register(request):
+#      if request.method=="POST":
+#         username=request.POST.get('username')
+#         firstname=request.POST.get('firstname')
+#         lastname=request.POST.get('lastname')
+#         phone=request.POST.get('phone')
+#         email=request.POST.get('email')
+#         password=request.POST.get('password')
+#         confirmpassword=request.POST.get('confirmpassword')
+#         if Register.objects.filter(username=username).exists():
+#             return HttpResponse("user name is already extsts")
+
+#         if len(phone) != 10:
+#             return HttpResponse("number not a valid")
+#         if password!=confirmpassword:
+#             return HttpResponse("password did't match")
+#         else:
+
+            
+#             register = Register(username=username,firstname=firstname,lastname=lastname,phone=phone,email=email,password=password,confirmpassword=confirmpassword)
+#             register.save()
+            
+       
+#             return redirect ('/')
+#      return render(request,'register.html')  
 def register(request):
      if request.method=="POST":
         username=request.POST.get('username')
@@ -96,4 +121,3 @@ def register(request):
        
             return redirect ('/')
      return render(request,'register.html')  
-    
