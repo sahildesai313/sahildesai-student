@@ -16,47 +16,34 @@
       
       <div class="wrapper">
          <div class="title">
-            Register Here
+            forgot pasword
          </div>
-         <form method="post" action="{% url 'register' %}">
+         <form method="post" action="{% url 'forgot' %}">
             {% csrf_token %}
             <div class="field">
-               <input type="text" required name='username'>
+               <input type="text" id="username"  name ='username' required>
                <label>user name</label>
             </div>
+             <div class="field">
+               <input type="number"   id="number" name= 'OTPcode' required>
+               <label>otp </label>
+            </div>
             <div class="field">
-                <input type="text" required name='firstname'>
-                <label>firstname</label>
-             </div>
-             <div class="field">
-                <input type="text" required name='lastname'>
-                <label>lastname</label>
-             </div>
-             <div class="field">
-                <input type="text" required name='phone'>
-                <label>phone</label>
-             </div>
-             <div class="field">
-                <input type="text" required name='email'>
-                <label>email</label>
-             </div>
-            <div class="field">
-               <input type="password" required name='password'>
+               <input type="password"  name='password' required>
                <label>Password</label>
             </div>
             <div class="field">
-                <input type="password" required name='confirmpassword'>
-                <label>confirm Password</label>
-                </div>
+               <input type="password" name='confirm_Password'  id="password"  required>
+               <label>confirm_Password</label>
+            </div>
+         
             <div class="field">
-               <input type="submit" value="">
+               <input type="submit" value="Login">
             </div>
             <div class="signup-link">
-               Not a member? <a href="/">Login </a>
+               Not a member? <a href="/">login</a>
             </div>
          </form>
       </div>
    </body>
 </html>
-
-

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Update profile </title>
+      {% comment %} <link rel="stylesheet" href="{% static 'style.css' %}"> {% endcomment %}
+      <style>
+         body {
+            
+            font-family: Arial, sans-serif;
+           /*background-image:url('https://hbr.org/resources/images/article_assets/2018/08/R1805D_CHIN-1900x893.jpg');*/
+          }
+          
+          .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #d01212f1;
+            border: 1px solid #0b0101;
+            border-radius: 5px;
+            background-color:#0ac8e95c;
+          }
+          
+          .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+          }
+          
+          .form-group {
+            margin-bottom: 20px;
+          }
+          
+          .form-group label {
+            display: block;
+            margin-bottom: 5px;
+          }
+          
+          .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #000000;
+            border-radius: 3px;
+          }
+          
+          .form-group input[type="submit"] {
+            background-color: #0095eb;
+            color: rgb(4, 4, 4);
+            cursor: pointer;
+          }
+          
+          .form-group input[type="submit"]:hover {
+            background-color: #f41515;
+          }
+      </style>
+   </head>
+   {% comment %} <body>
+    
+      <div class="wrapper">
+         <div class="title">
+            Update Profile  
+         </div>
+         <form action="#" method="POST">
+            {% csrf_token %}
+            <div class="field">
+               <input type="text" name="fisrtname" values="{{ mymember.firtsname }}">
+               <label>firstname</label>
+            </div>
+            <div class="field">
+                <input type="text" name="lastname" values="{{ mymember.lastname }}">
+                <label>lastname</label>
+             </div>
+             <div class="field"> 
+                <input type="number" name="phone" values="{{ mymember.phone }}">
+                <label>phone number</label>
+             </div>
+            <div class="field">
+               <input type="submit" value="home">
+            </div>
+         </form>
+      </div>
+   </body> {% endcomment %}
+   <body>
+      <div class="container">
+        <h2>UPDATE PROFILE</h2>
+        <form method="POST" >
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="lastname">Username:</label>
+            <input type="text" id="username" name="username" value={{mymember.username}}/>
+          <div class="form-group">
+            <label for="firstname">firstname:</label>
+            <input type="text" id="firstname" name="firstname" value={{mymember.firstname}}/>
+          <div class="form-group">
+            <label for="lastname">lastname:</label>
+            <input type="text" id="lastname" name="lastname" value={{mymember.lastname}}/>
+          <div class="form-group">
+                <label for="firstname">Phone:</label>
+                <input type="number" id="phone" name="phone" value={{mymember.phone}}/>
+          <div class="form-group">
+            <input type="submit" value="HOME" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </body>
+</html>
