@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% block title %}{% endblock %}
+{% block content %}
+<html lang="en" dir="ltr">
+   <head>
+      {%load static %}
+      <link rel="stylesheet" href="{% static 'style.css' %}">
+
+      <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% comment %} <link rel="stylesheet" href="{% static 'mystyle.css' %}">   {% endcomment %}
+        {% comment %} <img rel = "stylesheet" href="{% static 'images/image1.jpg' %}"> {% endcomment %}
+      <title>Login Form Design | CodeLab</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      
+      <div class="wrapper">
+         <div class="title">
+            Login Form
+         </div>
+         <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="field">
+               <input type="text" required name='username'>
+               <label>user name</label>
+            </div>
+            <div class="field">
+               <input type="password" required name='password'>
+               <label>Password</label>
+            </div>
+            <div class="content">
+               <div class="checkbox">
+                  <input type="checkbox" id="remember-me">
+                  <label for="remember-me">Remember me</label>
+               </div>
+               <div class="pass-link">
+                  <a href="/forgot/">Forgot password?</a>
+               </div>
+            </div>
+            <div class="field">
+               <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+               Not a member? <a href="/reg/">Signup now</a>
+            </div>
+         </form>
+         {% endblock %}
+      </div>
+   </body>
+</html>
