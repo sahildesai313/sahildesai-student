@@ -86,9 +86,6 @@
         <h2>UPDATE PROFILE</h2>
         <form method="POST" >
         {% csrf_token %}
-          {% comment %} <div class="form-group">
-            <label for="lastname">Username:</label>
-            <input type="text" id="username" name="username" value={{mymember.username}}> {% endcomment %}
           <div class="form-group">
             <label for="firstname">firstname:</label>
             <input type="text" id="firstname" name="firstname" value={{mymember.firstname}}>
