@@ -15,7 +15,7 @@ def profile(request):
         lastname= request.POST.get('lastname')
         phone=request.POST.get('phone')
         try:
-            mymember = Register.objects.get(username=username)
+            mymember = Register.objects.get(username=request.session["username"])
             newfname=firstname
             newlname=lastname
             newphone=phone
@@ -98,7 +98,7 @@ def register(request):
         if Register.objects.filter(username=username).exists():
             return HttpResponse("user name is already extsts")
 
-        if len(phone) != 10:
+        if len(phone)!= 10:
             return HttpResponse("number not a valid")
         if password!=confirmpassword:
             return HttpResponse("password did't match")
