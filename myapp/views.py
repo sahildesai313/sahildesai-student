@@ -98,12 +98,18 @@ def register(request):
         password=request.POST.get('password')
         confirmpassword=request.POST.get('confirmpassword')
         if Register.objects.filter(username=username).exists():
-            return HttpResponse("user name is already extsts")
+            messages.error(request, " username already exists")
+            return redirect('register')
 
         if len(phone) != 10:
-            return HttpResponse("number not a valid")
-        if password!=confirmpassword:
-            return HttpResponse("password did't match")
+            messages.error(request, " number is not a valid")
+            return redirect('register')
+
+            
+        if password != confirmpassword:
+            messages.error(request, "Passwords do not match.")
+            return redirect('register')
+
         else:     
             register = Register(username=username,firstname=firstname,lastname=lastname,phone=phone,email=email,password=password,confirmpassword=confirmpassword)
             register.save()
