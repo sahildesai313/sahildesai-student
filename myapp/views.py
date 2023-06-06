@@ -25,8 +25,7 @@ def profile(request):
             mymember.save()
             return redirect('/home')
         except UserDetail.DoesNotExist:
-            print(mymember)
-        return redirect('/login')
+            return redirect('/login')
     user_data = UserDetail.objects.get(username=request.session["username"])
     return render(request, "profile.html", context={"mymember": user_data})
 
@@ -42,12 +41,9 @@ def login(request):
         password = request.POST['password']
         user = UserDetail.objects.filter(username=username, password=password)
         if user.exists():
-
             messages.success(request, 'Successfully Logged In')
-            print("login")
             request.session["username"] = username
             return redirect('home')
-
         else:
             context["error"] = "Invalid username or password"
     return render(request, 'login.html', context=context)
@@ -105,7 +101,7 @@ def register(request):
             return redirect('register')
         else:
             register = UserDetail(username=username, firstname=firstname, lastname=lastname,
-                                phone=phone, email=email, password=password, confirmpassword=confirmpassword)
+                                  phone=phone, email=email, password=password, confirmpassword=confirmpassword)
             register.save()
 
             return redirect('/')
@@ -113,15 +109,8 @@ def register(request):
 
 
 def homepage(request):
-    # user= UserDetail.objects.all().values()
-    # print(user)
-
     if "username" not in request.session:
         return redirect("login")
 
-    print("user")
-    print(request.session["username"])
-
     user_data = UserDetail.objects.get(username=request.session["username"])
-
     return render(request, 'home.html', context={"user": user_data})
