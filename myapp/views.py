@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Register
 from django.contrib import messages
@@ -9,18 +9,19 @@ def profile(request):
     if "username" not in request.session:
         return redirect("login")
     if request.method == "POST":
-        username=request.POST.get('username')
-        firstname= request.POST.get('firstname')
-        lastname= request.POST.get('lastname')
-        phone=request.POST.get('phone')
+        username = request.POST.get('username')
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        phone = request.POST.get('phone')
         try:
-            mymember = Register.objects.get(username=username)
-            newfname=firstname
-            newlname=lastname
-            newphone=phone
-            mymember.firstname=newfname
-            mymember.lastname=newlname
-            mymember.phone=newphone
+            mymember = Register.objects.get(
+                username=request.session["username"])
+            newfname = firstname
+            newlname = lastname
+            newphone = phone
+            mymember.firstname = newfname
+            mymember.lastname = newlname
+            mymember.phone = newphone
             mymember.save()
             return redirect('/home')
         except Register.DoesNotExist:
@@ -32,19 +33,16 @@ def profile(request):
 
 def login(request):
     context = {}
-    print("login")
     if "username" in request.session:
         print("test")
         return redirect("home")
-    print(request.method)
+
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        print("this")
-        print(username, password)
         user = Register.objects.filter(username=username, password=password)
         if user.exists():
-          
+
             messages.success(request, 'Successfully Logged In')
             print("login")
             request.session["username"] = username
@@ -52,10 +50,10 @@ def login(request):
 
         else:
             context["error"] = "Invalid username or password"
-    return render(request,'login.html', context=context)
+    return render(request, 'login.html', context=context)
 
 
-def logout(request):    
+def logout(request):
     del request.session["username"]
     return redirect('login')
 
@@ -72,10 +70,10 @@ def forgot(request):
         if password == confirmpassword:
             user = Register.objects.get(username=username)
             new_password = password
-            user.password=new_password
-            new_confirmpassword=confirmpassword
-            user.confirmpassword=new_confirmpassword
-            
+            user.password = new_password
+            new_confirmpassword = confirmpassword
+            user.confirmpassword = new_confirmpassword
+
             user.save()
             return redirect('login')
         else:
@@ -86,28 +84,33 @@ def forgot(request):
 def register(request):
     if "username" in request.session:
         return redirect("home")
-    if request.method=="POST":
-        username=request.POST.get('username')
-        firstname=request.POST.get('firstname')
-        lastname=request.POST.get('lastname')
-        phone=request.POST.get('phone')
-        email=request.POST.get('email')
-        password=request.POST.get('password')
-        confirmpassword=request.POST.get('confirmpassword')
+    if request.method == "POST":
+        username = request.POST.get('username')
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirmpassword = request.POST.get('confirmpassword')
         if Register.objects.filter(username=username).exists():
-            return HttpResponse("user name is already extsts")
+            messages.error(request, " username already exists")
+            return redirect('register')
 
         if len(phone) != 10:
-            return HttpResponse("number not a valid")
-        if password!=confirmpassword:
-            return HttpResponse("password did't match")
-        else:     
-            register = Register(username=username,firstname=firstname,lastname=lastname,phone=phone,email=email,password=password,confirmpassword=confirmpassword)
+            messages.error(request, " number is not a valid")
+            return redirect('register')
+
+        if password != confirmpassword:
+            messages.error(request, "Passwords do not match.")
+            return redirect('register')
+        else:
+            register = Register(username=username, firstname=firstname, lastname=lastname,
+                                phone=phone, email=email, password=password, confirmpassword=confirmpassword)
             register.save()
-            
-       
-            return redirect ('/')
-    return render(request,'register.html')  
+
+            return redirect('/')
+    return render(request, 'register.html')
+
 
 def homepage(request):
     # user= Register.objects.all().values()

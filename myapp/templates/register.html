@@ -18,7 +18,14 @@
          <div class="title">
             Register Here
          </div>
-         <form method="post" action="{% url 'register' %}">{{error}}
+         {% if messages %}
+            <li class="messages">
+               {% for message in messages %}
+                     <li{% if message.tags %}  <p style="text-align: center;margin-top: 27px;color: red;"{{ message.tags }}{% endif %}>{{ message }}</li>
+               {% endfor %}
+                     </li>
+         {% endif %}
+         <form method="post" action="{% url 'register' %}">
             {% csrf_token %}
             <div class="field">
                <input type="text" required name='username'>
@@ -49,10 +56,10 @@
                 <label>confirm Password</label>
                 </div>
             <div class="field">
-               <input type="submit" value="">
+               <input type="submit" value="register">
             </div>
             <div class="signup-link">
-               Not a member? <a href="/">Login </a>
+               go to <a href="/">Login</a>
             </div>
          </form>
       </div>
