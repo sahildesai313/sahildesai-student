@@ -18,7 +18,7 @@
          <div class="title">
             Register Here
          </div>
-         <form method="post" action="{% url 'register' %}">
+         <form method="post" action="{% url 'register' %}">{{error}}
             {% csrf_token %}
             <div class="field">
                <input type="text" required name='username'>
