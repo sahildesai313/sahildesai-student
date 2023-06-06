@@ -15,7 +15,7 @@ def profile(request):
         lastname= request.POST.get('lastname')
         phone=request.POST.get('phone')
         try:
-            mymember = Register.objects.get(username=username)
+            mymember = Register.objects.get(username=request.session["username"])
             newfname=firstname
             newlname=lastname
             newphone=phone
@@ -29,6 +29,8 @@ def profile(request):
         return redirect('/login')
     user_data = Register.objects.get(username=request.session["username"])
     return render(request, "profile.html", context={"mymember": user_data})
+
+
 
 
 def login(request):
