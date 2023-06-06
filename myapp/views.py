@@ -2,8 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Register
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def profile(request):
@@ -15,7 +14,7 @@ def profile(request):
         lastname= request.POST.get('lastname')
         phone=request.POST.get('phone')
         try:
-            mymember = Register.objects.get(username=request.session["username"])
+            mymember = Register.objects.get(username=username)
             newfname=firstname
             newlname=lastname
             newphone=phone
@@ -29,8 +28,6 @@ def profile(request):
         return redirect('/login')
     user_data = Register.objects.get(username=request.session["username"])
     return render(request, "profile.html", context={"mymember": user_data})
-
-
 
 
 def login(request):
@@ -98,18 +95,12 @@ def register(request):
         password=request.POST.get('password')
         confirmpassword=request.POST.get('confirmpassword')
         if Register.objects.filter(username=username).exists():
-            messages.error(request, " username already exists")
-            return redirect('register')
+            return HttpResponse("user name is already extsts")
 
         if len(phone) != 10:
-            messages.error(request, " number is not a valid")
-            return redirect('register')
-
-            
-        if password != confirmpassword:
-            messages.error(request, "Passwords do not match.")
-            return redirect('register')
-
+            return HttpResponse("number not a valid")
+        if password!=confirmpassword:
+            return HttpResponse("password did't match")
         else:     
             register = Register(username=username,firstname=firstname,lastname=lastname,phone=phone,email=email,password=password,confirmpassword=confirmpassword)
             register.save()

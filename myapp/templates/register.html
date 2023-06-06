@@ -13,19 +13,12 @@
       <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <p style="text-align: center;color: red;">{{error}}</p>
+      
       <div class="wrapper">
          <div class="title">
             Register Here
          </div>
-         {% if messages %}
-    <li class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %}  <p style="text-align: center;margin-top: 27px;color: red;"{{ message.tags }}{% endif %}>{{ message }}</li>
-        {% endfor %}
-            </li>
-{% endif %}
-         <form method="post" action="{% url 'register' %}">
+         <form method="post" action="{% url 'register' %}">{{error}}
             {% csrf_token %}
             <div class="field">
                <input type="text" required name='username'>
@@ -56,10 +49,10 @@
                 <label>confirm Password</label>
                 </div>
             <div class="field">
-               <input type="submit" value="register">
+               <input type="submit" value="">
             </div>
             <div class="signup-link">
-               go to <a href="/">Login</a>
+               Not a member? <a href="/">Login </a>
             </div>
          </form>
       </div>

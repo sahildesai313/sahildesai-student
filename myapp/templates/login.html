@@ -19,8 +19,7 @@
          <div class="title">
             Login Form
          </div>
-         <p style="text-align: center;margin-top: 27px;color: red;">{{error}}</p>
-         <form method="post" action="{% url 'login' %}">
+         <form method="post" action="{% url 'login' %}">{{error}}
             {% csrf_token %}
             <div class="field">
                <input type="text" required name='username'>
