@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Register
+from .models import UserDetail
 from django.contrib import messages
 
 
@@ -14,7 +14,7 @@ def profile(request):
         lastname = request.POST.get('lastname')
         phone = request.POST.get('phone')
         try:
-            mymember = Register.objects.get(
+            mymember = UserDetail.objects.get(
                 username=request.session["username"])
             newfname = firstname
             newlname = lastname
@@ -24,10 +24,10 @@ def profile(request):
             mymember.phone = newphone
             mymember.save()
             return redirect('/home')
-        except Register.DoesNotExist:
+        except UserDetail.DoesNotExist:
             print(mymember)
         return redirect('/login')
-    user_data = Register.objects.get(username=request.session["username"])
+    user_data = UserDetail.objects.get(username=request.session["username"])
     return render(request, "profile.html", context={"mymember": user_data})
 
 
@@ -40,7 +40,7 @@ def login(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        user = Register.objects.filter(username=username, password=password)
+        user = UserDetail.objects.filter(username=username, password=password)
         if user.exists():
 
             messages.success(request, 'Successfully Logged In')
@@ -68,7 +68,7 @@ def forgot(request):
         confirmpassword = request.POST.get('confirm_Password')
 
         if password == confirmpassword:
-            user = Register.objects.get(username=username)
+            user = UserDetail.objects.get(username=username)
             new_password = password
             user.password = new_password
             new_confirmpassword = confirmpassword
@@ -92,7 +92,7 @@ def register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         confirmpassword = request.POST.get('confirmpassword')
-        if Register.objects.filter(username=username).exists():
+        if UserDetail.objects.filter(username=username).exists():
             messages.error(request, " username already exists")
             return redirect('register')
 
@@ -104,7 +104,7 @@ def register(request):
             messages.error(request, "Passwords do not match.")
             return redirect('register')
         else:
-            register = Register(username=username, firstname=firstname, lastname=lastname,
+            register = UserDetail(username=username, firstname=firstname, lastname=lastname,
                                 phone=phone, email=email, password=password, confirmpassword=confirmpassword)
             register.save()
 
@@ -113,7 +113,7 @@ def register(request):
 
 
 def homepage(request):
-    # user= Register.objects.all().values()
+    # user= UserDetail.objects.all().values()
     # print(user)
 
     if "username" not in request.session:
@@ -122,6 +122,6 @@ def homepage(request):
     print("user")
     print(request.session["username"])
 
-    user_data = Register.objects.get(username=request.session["username"])
+    user_data = UserDetail.objects.get(username=request.session["username"])
 
     return render(request, 'home.html', context={"user": user_data})

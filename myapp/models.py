@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Register(models.Model):
+class UserDetail(models.Model):
     username = models.CharField(max_length=100)
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
