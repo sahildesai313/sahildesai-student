@@ -21,4 +21,4 @@ class package_details(models.Model):
     package_price=models.IntegerField()
    
     def __str__(self):
-        return f"{self.package_name}{self.no_of_day}{self.package_description}{self.package_price}{self.image}"
+        return f"{self.package_name}{self.no_of_day}{self.package_description}{self.package_price}"
