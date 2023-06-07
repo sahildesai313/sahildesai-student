@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import UserDetail , package_details
 from django.contrib import messages
 from django.template import loader
-from .models import Image
+
 
 
 
@@ -114,8 +114,8 @@ def register(request):
 def homepage(request):
     if "username" not in request.session:
         return redirect("login")
-    data = Image.objects.all()
-    return render(request, 'home.html',context={'data':data})
+   
+    return render(request, 'home.html')
 
 
 def tour(request):
