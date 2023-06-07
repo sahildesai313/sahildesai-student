@@ -23,9 +23,3 @@ class package_details(models.Model):
 
     def __str__(self):
         return f"{self.package_name}{self.no_of_day}{self.package_description}{self.package_price}{self.image}"
-
-
-class Image(models.Model):
-    title = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='pics')
-    
