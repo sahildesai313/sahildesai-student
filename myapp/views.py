@@ -118,11 +118,13 @@ def homepage(request):
     return render(request, 'home.html',context={'data':data})
 
 
-def tour(request):
-  item = package_details.objects.get()
+def tour(request,image_id):
+  
+  item = package_details.objects.get(image_identifier=image_id)
   template = loader.get_template('tour_detail.html')
   context = {
     'item': item,
+    
   }
   return HttpResponse(template.render(context, request))     
 

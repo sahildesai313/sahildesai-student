@@ -11,6 +11,5 @@ urlpatterns = [
     path('profile/',views.profile,name="profile"),
     path('reg/',views.register,name='register'),
     path('home/',views.homepage,name='home'),
-    path('home/tour_detail/',views.tour,name='tour'),
-   
+    path('home/tour_detail/<int:image_id>/',views.tour,name='tour'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

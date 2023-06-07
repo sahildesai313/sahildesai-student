@@ -3,7 +3,7 @@ from .models import UserDetail ,package_details
 from .models import Image
 
 class imageAdmin(admin.ModelAdmin):
-    list_display = ["title", "photo"]
+    list_display = ["title", "photo" ,"id"]
 
 admin.site.register(Image, imageAdmin)
 
@@ -15,6 +15,7 @@ admin.site.register(UserDetail, UserDetailAdmin)
 
 
 class Package_Details(admin.ModelAdmin):
-    list_display = ("package_name","no_of_day","package_description","package_price","image")
+    list_display = ("package_name","no_of_day","package_description","package_price","image_identifier")
 admin.site.register(package_details,Package_Details)
+
 
