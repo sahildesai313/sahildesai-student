@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+<ul>
+    {% block content %}
+   
+      <li>{{ item.package_name }}</li>
+      <li>{{ item.no_of_day }}</li>
+      <li>{{ item.package_description }}</li>
+      <li>{{ item.package_price }}</li>
+      <li>{{item.image}}</li>
+      <a href="{{ item.photo.url }}">
+        <img src="{{ item.photo.url }}" alt="Lights" style="width:100%">
+   
+  </ul>
+  {% endblock %}
