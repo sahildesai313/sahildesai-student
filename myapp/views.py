@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UserDetail
+from .models import UserDetail,Package_details
 from django.contrib import messages
-
+from math import ceil
 
 # Create your views here.
+def tour(request,id):
+    item = Package_details.objects.get(id=id)
+    context={'item':item}
+    return render(request,'tour-details.html',context)
 def profile(request):
     if "username" not in request.session:
         return redirect("login")
@@ -23,6 +27,7 @@ def profile(request):
             mymember.lastname = newlname
             mymember.phone = newphone
             mymember.save()
+            
             return redirect('/home')
         except UserDetail.DoesNotExist:
             return redirect('/login')
@@ -109,8 +114,13 @@ def register(request):
 
 
 def homepage(request):
+    context={}
     if "username" not in request.session:
         return redirect("login")
+    item=Package_details.objects.all()
+    # user_data = UserDetail.objects.get(username=request.session["username"])
+    return render(request, 'home.html', context={"item": item})
 
-    user_data = UserDetail.objects.get(username=request.session["username"])
-    return render(request, 'home.html', context={"user": user_data})
+def booking(request):
+    return render(request,'booking.html')
+

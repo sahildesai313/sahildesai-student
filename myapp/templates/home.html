@@ -88,23 +88,33 @@
                     </div>
                     <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide.</p>
                 </div>
+                {% comment %} {% for x in item %}
+                    
+                            <li><a href="/tour/{{x.id }}">{{x.package_name }}</a></li>
+                            {{x.package_image}}
+                    {% endfor %} {% endcomment %}
                 <div>
+                    {% for x in item %}
                     <!-- TOUR PLACE 1 -->
-                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow slideInUp" data-wow-duration="0.5s">
+                     <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow slideInUp" data-wow-duration="0.5s">
                         <!-- OFFER BRAND -->
                         <div class="band"> <img src="https://rn53themes.net/themes/demo/travelz/images/band.png" alt="" /> </div>
                         <!-- IMAGE -->
-                        <div class="v_place_img"> <img src="https://rn53themes.net/themes/demo/travelz/images/t5.png" alt="Tour Booking" title="Tour Booking" /> </div>
+                        {% comment %} <div class="v_place_img"> <img src="https://rn53themes.net/themes/demo/travelz/images/t5.png" alt="Tour Booking" title="Tour Booking" /> </div> {% endcomment %}
+                        <div class="v_place_img"> <img src="/media/{{x.package_image}}" alt="Tour Booking" title="Tour Booking" /> </div>
                         <!-- TOUR TITLE & ICONS -->
                         <div class="b_pack rows">
                             <!-- TOUR TITLE -->
                             <div class="col-md-8 col-sm-8">
-                                <h4><a href="tour-details.html">Rio de Janeiro<span class="v_pl_name">(Brazil)</span></a></h4>
+                                <li><a href="/tour/{{x.id }}">{{x.package_name }}</a></li>
+                                {% comment %} <h4>{{x}}</h4> {% endcomment %}
                             </div>
                             <!-- TOUR ICONS -->
                             
                         </div>
-                    </div>
+                    </div> 
+                    {% endfor %}
+                    {% comment%}
                     <!-- TOUR PLACE 2 -->
                     <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="0.7s">
                         <!-- OFFER BRAND -->
@@ -120,9 +130,9 @@
                             <!-- TOUR ICONS -->
                             
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                     <!-- TOUR PLACE 3 -->
-                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="0.9s">
+                    {% comment %} <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="0.9s">
                         <div class="v_place_img"><img src="https://rn53themes.net/themes/demo/travelz/images/t2.png" alt="Tour Booking" title="Tour Booking" /> </div>
                         <div class="b_pack rows">
                             <div class="col-md-8 col-sm-8">
@@ -130,9 +140,9 @@
                             </div>
                            
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                     <!-- TOUR PLACE 4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="1.1s">
+                    {% comment %} <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="1.1s">
                         <div class="v_place_img"><img src="https://rn53themes.net/themes/demo/travelz/images/t3.png" alt="Tour Booking" title="Tour Booking" /> </div>
                         <div class="b_pack rows">
                             <div class="col-md-8 col-sm-8">
@@ -140,27 +150,8 @@
                             </div>
                            
                         </div>
-                    </div>
-                    <!-- TOUR PLACE 5 -->
-                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="1.3s">
-                        <div class="v_place_img"><img src="https://rn53themes.net/themes/demo/travelz/images/t4.png" alt="Tour Booking" title="Tour Booking" /> </div>
-                        <div class="b_pack rows">
-                            <div class="col-md-8 col-sm-8">
-                                <h4><a href="tour-details.html">Nail Island<span class="v_pl_name">(Andaman)</span></a></h4>
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <!-- TOUR PLACE 6 -->
-                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="1.5s">
-                        <div class="v_place_img"><img src="https://rn53themes.net/themes/demo/travelz/images/t6.png" alt="Tour Booking" title="Tour Booking" /> </div>
-                        <div class="b_pack rows">
-                            <div class="col-md-8 col-sm-8">
-                                <h4><a href="tour-details.html">Mauritius<span class="v_pl_name">(Indiana)</span></a></h4>
-                            </div>
-                           
-                        </div>
-                    </div>
+                    </div> {% endcomment %}
+                    
                 </div>
             </div>
         </div>
