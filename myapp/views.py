@@ -125,3 +125,4 @@ def tour(request):
     'item': item,
   }
   return HttpResponse(template.render(context, request))     
+
