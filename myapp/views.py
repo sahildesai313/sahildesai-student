@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UserDetail
+from .models import UserDetail , package_details
 from django.contrib import messages
+from django.template import loader
+from .models import Image
+
 
 
 # Create your views here.
@@ -111,6 +114,15 @@ def register(request):
 def homepage(request):
     if "username" not in request.session:
         return redirect("login")
+    data = Image.objects.all()
+    return render(request, 'home.html',context={'data':data})
 
-    user_data = UserDetail.objects.get(username=request.session["username"])
-    return render(request, 'home.html', context={"user": user_data})
+
+def tour(request):
+  item = package_details.objects.get()
+  template = loader.get_template('tour_detail.html')
+  context = {
+    'item': item,
+  }
+  return HttpResponse(template.render(context, request))     
+

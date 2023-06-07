@@ -12,3 +12,20 @@ class UserDetail(models.Model):
 
     def _str_(self):
         return f"{self.username}{self.firstname}{self.lastname}{self.phone}{self.email}{self.password}{self.confirmpassword}"
+
+
+class package_details(models.Model):
+    package_name =models.CharField(max_length=20)
+    no_of_day =models.IntegerField()
+    package_description =models.TextField()
+    package_price=models.IntegerField()
+    image = models.ImageField(upload_to='pics')
+
+    def __str__(self):
+        return f"{self.package_name}{self.no_of_day}{self.package_description}{self.package_price}{self.image}"
+
+
+class Image(models.Model):
+    title = models.CharField(max_length=20)
+    photo = models.ImageField(upload_to='pics')
+    
