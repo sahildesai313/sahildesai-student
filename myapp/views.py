@@ -13,20 +13,20 @@ def profile(request):
         return redirect("login")
     if request.method == "POST":
         username = request.POST.get('username')
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
+        fname = request.POST.get('firstname')
+        lname = request.POST.get('lastname')
         phone = request.POST.get('phone')
         try:
-            mymember = UserDetail.objects.get(
-                username=request.session["username"])
-            newfname = firstname
-            newlname = lastname
+            mymember = UserDetail.objects.get(username=username)
+            print(mymember)
+            newfname = fname
+            newlname = lname
             newphone = phone
             mymember.firstname = newfname
             mymember.lastname = newlname
             mymember.phone = newphone
             mymember.save()
-            
+            print(mymember)
             return redirect('/home')
         except UserDetail.DoesNotExist:
             return redirect('/login')

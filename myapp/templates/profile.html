@@ -20,13 +20,16 @@
     </div>
     <form method="post" action="{% url 'forgot' %}">
       {% csrf_token %}
-
       <div class="field">
-        <input type="text" id="number" name='firstname'   value={{mymember.firstname}} required>
+        <input type="text" id="username" name='username'  value={{mymember.username}} required>
+        <label>username </label>
+      </div>
+      <div class="field">
+        <input type="text" id="firstname" name='firstname'  value={{mymember.firstname}} required>
         <label>firstname </label>
       </div>
       <div class="field">
-        <input type="text" name='lastname'   value={{mymember.lastname}} required>
+        <input type="text" name='lastname' value={{mymember.lastname}} required>
         <label>lastname</label>
       </div>
       <div class="field">
