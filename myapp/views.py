@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import UserDetail,Package_details
 from django.contrib import messages
-from math import ceil
 
 # Create your views here.
 def tour(request,id):
@@ -118,7 +117,6 @@ def homepage(request):
     if "username" not in request.session:
         return redirect("login")
     item=Package_details.objects.all()
-    # user_data = UserDetail.objects.get(username=request.session["username"])
     return render(request, 'home.html', context={"item": item})
 
 def booking(request):

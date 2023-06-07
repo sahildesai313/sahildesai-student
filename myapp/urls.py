@@ -13,3 +13,4 @@ urlpatterns = [
     path('tour/<int:id>/',views.tour,name='tour'),
     path('booking',views.booking,name='booking'),
 ]
+

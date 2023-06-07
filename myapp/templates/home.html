@@ -63,18 +63,9 @@
     <link rel="stylesheet" href="https://rn53themes.net/themes/demo/travelz/css/bootstrap.css">
     <link rel="stylesheet" href="https://rn53themes.net/themes/demo/travelz/css/mob.css">
     <link rel="stylesheet" href="https://rn53themes.net/themes/demo/travelz/css/animate.css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 </head>
-
 <body>
-  
 <div>
-   
     <section style="background:#EBE3D4">
         <div class="rows pad-bot-redu tb-space">
             <div class="container">
@@ -88,78 +79,25 @@
                     </div>
                     <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide.</p>
                 </div>
-                {% comment %} {% for x in item %}
-                    
-                            <li><a href="/tour/{{x.id }}">{{x.package_name }}</a></li>
-                            {{x.package_image}}
-                    {% endfor %} {% endcomment %}
                 <div>
                     {% for x in item %}
-                    <!-- TOUR PLACE 1 -->
+                    
                      <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow slideInUp" data-wow-duration="0.5s">
-                        <!-- OFFER BRAND -->
                         <div class="band"> <img src="https://rn53themes.net/themes/demo/travelz/images/band.png" alt="" /> </div>
-                        <!-- IMAGE -->
-                        {% comment %} <div class="v_place_img"> <img src="https://rn53themes.net/themes/demo/travelz/images/t5.png" alt="Tour Booking" title="Tour Booking" /> </div> {% endcomment %}
                         <div class="v_place_img"> <img src="/media/{{x.package_image}}" alt="Tour Booking" title="Tour Booking" /> </div>
-                        <!-- TOUR TITLE & ICONS -->
                         <div class="b_pack rows">
                             <!-- TOUR TITLE -->
                             <div class="col-md-8 col-sm-8">
                                 <li><a href="/tour/{{x.id }}">{{x.package_name }}</a></li>
-                                {% comment %} <h4>{{x}}</h4> {% endcomment %}
                             </div>
-                            <!-- TOUR ICONS -->
-                            
                         </div>
                     </div> 
                     {% endfor %}
-                    {% comment%}
-                    <!-- TOUR PLACE 2 -->
-                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="0.7s">
-                        <!-- OFFER BRAND -->
-                        <div class="band"> <img src="https://rn53themes.net/themes/demo/travelz/images/band1.png" alt="" /> </div>
-                        <!-- IMAGE -->
-                        <div class="v_place_img"> <img src="https://rn53themes.net/themes/demo/travelz/images/t1.png" alt="Tour Booking" title="Tour Booking" /> </div>
-                        <!-- TOUR TITLE & ICONS -->
-                        <div class="b_pack rows">
-                            <!-- TOUR TITLE -->
-                            <div class="col-md-8 col-sm-8">
-                                <h4><a href="tour-details.html">Paris<span class="v_pl_name">(England)</span></a></h4>
-                            </div>
-                            <!-- TOUR ICONS -->
-                            
-                        </div>
-                    </div> {% endcomment %}
-                    <!-- TOUR PLACE 3 -->
-                    {% comment %} <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="0.9s">
-                        <div class="v_place_img"><img src="https://rn53themes.net/themes/demo/travelz/images/t2.png" alt="Tour Booking" title="Tour Booking" /> </div>
-                        <div class="b_pack rows">
-                            <div class="col-md-8 col-sm-8">
-                                <h4><a href="tour-details.html">South India<span class="v_pl_name">(India)</span></a></h4>
-                            </div>
-                           
-                        </div>
-                    </div> {% endcomment %}
-                    <!-- TOUR PLACE 4 -->
-                    {% comment %} <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="1.1s">
-                        <div class="v_place_img"><img src="https://rn53themes.net/themes/demo/travelz/images/t3.png" alt="Tour Booking" title="Tour Booking" /> </div>
-                        <div class="b_pack rows">
-                            <div class="col-md-8 col-sm-8">
-                                <h4><a href="tour-details.html">The Great Wall<span class="v_pl_name">(China)</span></a></h4>
-                            </div>
-                           
-                        </div>
-                    </div> {% endcomment %}
-                    
                 </div>
             </div>
         </div>
     </section>
 </div>
-  
-  
-   
     <!--========= Scripts ===========-->
     <script src="https://rn53themes.net/themes/demo/travelz/js/jquery-latest.min.js"></script>
     <script src="https://rn53themes.net/themes/demo/travelz/js/bootstrap.js"></script>
@@ -171,4 +109,6 @@
 </body>
 
 
-    </html>
+</html>
+
+
