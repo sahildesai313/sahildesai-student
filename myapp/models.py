@@ -24,3 +24,19 @@ class resturants_details(models.Model):
 
 def __str__(self):
         return f"{self.item_name}{self.item_description}{self.items_price}{self.photo}"
+
+
+
+
+
+
+class Grocery_details(models.Model):
+    Grocery_name=models.CharField(max_length=200)
+    Grocery_price=models.IntegerField()
+    Grocery_description=models.TextField()
+    photo=models.ImageField(upload_to='photo')
+
+
+    def _str_(self):
+      return f"{self.Grocery_name}{self.Grocery_price}{self.Grocery_description}"
+

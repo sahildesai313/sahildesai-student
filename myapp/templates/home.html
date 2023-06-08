@@ -129,7 +129,70 @@
         </div>
     </section>
 
-
+   
+       
+        <section style="background:#EBE3D4">
+            <div class="rows pad-bot-redu tb-space">
+                <div class="container">
+                    <!-- TITLE & DESCRIPTION -->
+                    <div class="spe-title">
+                        <h2>FRESH  <span>GROCERY ITEAM</span></h2>
+                        <div class="title-line">
+                            <div class="tl-1"></div>
+                            <div class="tl-2"></div>
+                            <div class="tl-3"></div>
+                        </div>
+                        <p>Come here you will find fresh grocery of the world</p>
+                    </div>
+                  
+                
+                
+    
+    
+                   
+                        
+                        <!-- TOUR PLACE 1 -->
+                        {% for x in datas %}
+                        <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow slideInUp" data-wow-duration="0.5s">
+                            <!-- OFFER BRAND -->
+                            {% comment %} <div class="band"> <img src= alt="" /> </div> {% endcomment %}
+                            <!-- IMAGE -->
+                            
+                            <div class="v_place_img">
+                                 <a href="{{x.photo.url}}"> <img src="{{ x.photo.url }}" alt="Tour Booking" title="Tour Booking" style="
+                                    height: 264px;
+                                " /> 
+                                <div class="b_pack rows">
+                                    <!-- TOUR TITLE -->
+                                    <div class="col-md-8 col-sm-8">
+                                        <h4><a href="/home/grocery_details/{{x.id}}/">{{ x.Grocery_name}}<span class="v_pl_name"</span></a></h4>
+                                        </a>
+                                    </div>
+                                
+                                    <!-- TOUR ICONS -->
+                                    
+                                </div>
+                                
+                            </div>
+                            <!-- TOUR TITLE & ICONS -->
+                            
+                           
+                        </div>
+                        {% endfor %}    
+                       
+                          
+                           
+                </div>    
+                
+            </div>
+        </section>
+    
+    
+            
+    
+    
+    
+    
         
 </div> 
 
@@ -145,4 +208,6 @@
 </body>
 
  </html> 
+
+
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
 
@@ -45,4 +45,94 @@
   </div>
 </body>
 
-</html>
+</html> -->
+
+
+
+
+<style>
+  table,
+  th,
+  td {
+    border: 2px solid black;
+
+  }
+
+
+  h1 {
+    text-align: center;
+  }
+
+  .right {
+    background-color: lightblue;
+    float: left;
+    width: 200px;
+    padding: 100px 50px;
+    margin-top: 7px;
+    display: flex;
+  }
+</style>
+
+
+<div style="background-color:#1BD8BC ;padding:15px;">
+   <form align="left" >
+    <p>
+       PROFILE PAGE <st
+    </p>
+   </form>
+  <form align="right" name="form1" method="post">
+    <p style="text-align: top;"> <a href="{% url 'home' %}">Back 🢨</a>
+  </form>
+</div>
+{% load static %}
+<link rel="stylesheet" href="{% static 'due.css' %}">
+<div class="container bootstrap snippets bootdey">
+  <h1 class="text-primary"></h1>
+  <label align="right">
+
+  </label>
+</div>
+<hr>
+
+<!-- edit form column -->
+
+<h3>Personal info</h3>
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="col-lg-3 control-label">firstname</label>
+    <div class="col-lg-8">
+      <input class="form-control" type="text" value="{{mymember.firstname}}"> <a href="/updateprofile">✎ </a>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-3 control-label">lastname:</label>
+    <div class="col-lg-8">
+      <input class="form-control" type="text" value="{{mymember.lastname}}">
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-3 control-label">Phone</label>
+    <div class="col-lg-8">
+      <input class="form-control" type="text" value="{{mymember.phone}}">
+    </div>
+
+  </div>
+
+
+  </div>
+  <div class="form-group">
+    <label class="col-lg-3 control-label">Email:</label>  
+    <div class="col-lg-8">
+      <input class="form-control" type="text" value="{{user.email}}">
+    </div>
+  </div>
+</form>
+
+</div>
+</div>
+<hr>

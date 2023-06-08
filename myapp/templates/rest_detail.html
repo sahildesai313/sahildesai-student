@@ -1,12 +1,21 @@
 {% extends "master.html" %}
-
-
-    {% block content %}
-    <ul>
-      <li>{{ item.item_name }}</li>
-      <li>{{ item.item_description }}</li>
-      <li>{{ item.items_price }}</li>
-   
-   </ul>
+{% block content %}
+ 
+{%load static %}
+    <link rel="stylesheet" href="{% static 'detail.css' %}">
+  
+<div class="card">
+ <div class="img-container">
+      <img class="phone" src="{{item.photo.url}}">
+    </div>
+    
+    <div class="container">
+      <h1>{{ item.item_name }}</h1>
+      <h3 class="price">{{ item.items_price }}<small></small>&euro;</h3>
+      <a href="#" class="buy">Buy Now</a>
+    </div>
+    
+</div>
   {% endblock %}
 
+  

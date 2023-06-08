@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UserDetail ,resturants_details
+from .models import UserDetail ,resturants_details,Grocery_details
 from django.contrib import messages
 from django.template import loader
 
@@ -12,13 +12,11 @@ def profile(request):
     if "username" not in request.session:
         return redirect("login")
     if request.method == "POST":
-        username = request.POST.get('username')
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
         phone = request.POST.get('phone')
         try:
-            mymember = UserDetail.objects.get(
-                username=request.session["username"])
+            mymember = UserDetail.objects.get(username=request.session["username"])
             newfname = firstname
             newlname = lastname
             newphone = phone
@@ -115,7 +113,8 @@ def homepage(request):
     if "username" not in request.session:
         return redirect("login")
     data = resturants_details.objects.all()
-    return render(request, 'home.html',context={'data':data})
+    datas=Grocery_details.objects.all()
+    return render(request, 'home.html',context={'data':data,'datas':datas})
 
 
 def rest(request,image_id):
@@ -125,6 +124,17 @@ def rest(request,image_id):
   context = {
     'item': item,
     'id':id,
-  }
+    }
   return HttpResponse(template.render(context, request))     
+
+
+
+def grocery(request,image_id):
+    value=Grocery_details.objects.get(id=image_id)
+    template = loader.get_template('grocery_details.html')
+    context = {
+    'value':value,
+ 
+}
+    return HttpResponse(template.render(context,request))
 
