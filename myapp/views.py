@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import UserDetail , package_details
 from django.contrib import messages
 from django.template import loader
-from .models import Image
+
 
 
 
@@ -114,17 +114,17 @@ def register(request):
 def homepage(request):
     if "username" not in request.session:
         return redirect("login")
-    data = Image.objects.all()
+    data = package_details.objects.all()
     return render(request, 'home.html',context={'data':data})
 
 
 def tour(request,image_id):
   
-  item = package_details.objects.get(image_identifier=image_id)
+  item = package_details.objects.get(id=image_id)
   template = loader.get_template('tour_detail.html')
   context = {
     'item': item,
-    
+    'id':id,
   }
   return HttpResponse(template.render(context, request))     
 

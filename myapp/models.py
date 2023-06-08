@@ -19,15 +19,11 @@ class package_details(models.Model):
     no_of_day =models.IntegerField()
     package_description =models.TextField()
     package_price=models.IntegerField()
-    image_identifier = models.IntegerField(unique=True)
-    
+    photo = models.ImageField(upload_to='pics')
 
     def __str__(self):
         return f"{self.package_name}{self.no_of_day}{self.package_description}{self.package_price}"
 
 
-class Image(models.Model):
-    title = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='pics')
-    
+
 
