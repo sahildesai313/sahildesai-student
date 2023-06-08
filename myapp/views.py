@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UserDetail , package_details
+from .models import UserDetail ,resturants_details
 from django.contrib import messages
 from django.template import loader
 
@@ -114,15 +114,17 @@ def register(request):
 def homepage(request):
     if "username" not in request.session:
         return redirect("login")
-   
-    return render(request, 'home.html')
+    data = resturants_details.objects.all()
+    return render(request, 'home.html',context={'data':data})
 
 
-def tour(request):
-  item = package_details.objects.get()
-  template = loader.get_template('tour_detail.html')
+def rest(request,image_id):
+  
+  item = resturants_details.objects.get(id=image_id)
+  template = loader.get_template('rest_detail.html')
   context = {
     'item': item,
+    'id':id,
   }
   return HttpResponse(template.render(context, request))     
 

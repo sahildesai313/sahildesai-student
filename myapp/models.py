@@ -14,11 +14,13 @@ class UserDetail(models.Model):
         return f"{self.username}{self.firstname}{self.lastname}{self.phone}{self.email}{self.password}{self.confirmpassword}"
 
 
-class package_details(models.Model):
-    package_name =models.CharField(max_length=20)
-    no_of_day =models.IntegerField()
-    package_description =models.TextField()
-    package_price=models.IntegerField()
-   
-    def __str__(self):
-        return f"{self.package_name}{self.no_of_day}{self.package_description}{self.package_price}"
+
+class resturants_details(models.Model):
+    item_name = models.CharField(max_length=20)
+    item_description = models.TextField(max_length=500 )
+    items_price = models.IntegerField()
+    photo = models.ImageField(upload_to='pics')
+
+
+def __str__(self):
+        return f"{self.item_name}{self.item_description}{self.items_price}{self.photo}"
