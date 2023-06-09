@@ -1,62 +1,38 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UserDetail, resturants_details
+from .models import UserDetail, resturants_details,Grocery_details
 from django.contrib import messages
 from django.template import loader
 
 
 
 
+def profile(request):
+    if "username" not in request.session:
+        return redirect("login")
+    if request.method == "POST":
 
-# def profile(request):
-#     if request.method == 'GET':
-#         user_profile = UserDetail.objects.get(user=request.user)
-#         return render(request, 'profile.html', context={"mymember": user_data})
-#     elif request.method == 'POST':
-#         user_profile = UserDetail.objects.get(user=request.user)
-        
-#         # Update the fields based on the POST data
-#         user_profile.firstname = request.POST.get('firstname')
-#         user_profile.lastname = request.POST.get('lastname')
-        
-#         # Save the updated user profile
-#         user_profile.save()
-        
-#         return redirect('home')
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        phone = request.POST.get('phone')
 
+        try:
+            mymember = UserDetail.objects.get(
+                username=request.session["username"])
 
+            newfname = firstname
+            newlname = lastname
+            newphone = phone
+            mymember.firstname = newfname
+            mymember.lastname = newlname
+            mymember.phone = newphone
+            mymember.save()
 
-
-
-
-
-
-# def profile(request):
-#     if "username" not in request.session:
-#         return redirect("login")
-#     if request.method == "POST":
-
-#         firstname = request.POST.get('firstname')
-#         lastname = request.POST.get('lastname')
-#         phone = request.POST.get('phone')
-
-#         try:
-#             mymember = UserDetail.objects.get(
-#                 username=request.session["username"])
-
-#             newfname = firstname
-#             newlname = lastname
-#             newphone = phone
-#             mymember.firstname = newfname
-#             mymember.lastname = newlname
-#             mymember.phone = newphone
-#             mymember.save()
-
-#             return redirect('/home')
-#         except UserDetail.DoesNotExist:
-#             return redirect('/login')
-#     user_data = UserDetail.objects.get(username=request.session["username"])
-#     return render(request, "profile.html", context={"mymember": user_data})
+            return redirect('/home')
+        except UserDetail.DoesNotExist:
+            return redirect('/login')
+    user_data = UserDetail.objects.get(username=request.session["username"])
+    return render(request, "profile.html", context={"mymember": user_data})
 
 
 def login(request):
@@ -141,8 +117,8 @@ def homepage(request):
     if "username" not in request.session:
         return redirect("login")
     data = resturants_details.objects.all()
-    return render(request, 'home.html', context={'data': data})
-
+    datas=Grocery_details.objects.all()
+    return render(request, 'home.html',context={'data':data,'datas':datas})
 
 def rest(request, image_id):
 
@@ -153,3 +129,14 @@ def rest(request, image_id):
         'id': id,
     }
     return HttpResponse(template.render(context, request))
+
+
+def grocery(request,image_id):
+    value=Grocery_details.objects.get(id=image_id)
+    template = loader.get_template('grocery_details.html')
+    context = {
+    'value':value,
+ 
+}
+    return HttpResponse(template.render(context,request))
+
