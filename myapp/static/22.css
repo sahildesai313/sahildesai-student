@@ -1,0 +1,22 @@
+h1{
+    text-align:center;
+  }
+  
+  form{
+    margin-left:300px;
+    font-weight:bold;
+  }
+  
+  input{
+    width:240px;
+    height:25px;
+    border-radius:2px;
+    border:1px solid #ccc;
+    padding-left:10px;
+  }
+  
+  input[type="submit"]{
+    height:30px;
+  }
+  
+  
