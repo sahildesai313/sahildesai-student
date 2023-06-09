@@ -11,7 +11,7 @@
     background:#212121;
   }
   .phone{
-
+    
     height: 300px;
     width: 250px;
   }
@@ -53,7 +53,7 @@
     justify-content:center;
     align-items:center;
     padding-top:20px;
-    z-inder:1;
+    
   }
   .card .container{
     position:relative;
