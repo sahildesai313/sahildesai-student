@@ -8,20 +8,14 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% comment %}
-  <link rel="stylesheet" href="{% static 'mystyle.css' %}"> {% endcomment %}
-  {% comment %} <img rel="stylesheet" href="{% static 'images/image1.jpg' %}"> {% endcomment %}
-  <title>Login Form Design | CodeLab</title>
-  <link rel="stylesheet" href="style.css">
+ 
 </head>
 
 <body>
-
+  <h1> update profile </h1>
   <div class="wrapper">
-    <div class="title">
-      UPDATE PROFILE
-    </div>
-    <form method="post" action="{% url 'forgot' %}">
+    
+    <form method="post" action="{% url 'profile' %}">
       {% csrf_token %}
 
       <div class="field">
@@ -45,4 +39,23 @@
   </div>
 </body>
 
-</html>
+</html>  
+
+ {% comment %} {%load static %}
+<link rel="stylesheet" href="{% static '22.css' %}">
+<h1>Update Profile</h1>
+<form>
+ 
+  First name: <br><input name="" placeholder="Enter your First name" name='firstname'   value={{mymember.firstname}}><br><br>
+  Last name:<br><input name="" placeholder="Enter your Last name" name='lastname'   value={{mymember.lastname}}><br><br>
+  Mobile Number: <br><input name="" placeholder="Enter your mobile number"name='phone' id="phone"  value={{mymember.phone}}><br><br>
+  Email: <br><input name="" placeholder="Enter your Email Id"name='email' id="email"  value={{mymember.email}}><br><br>
+  
+  
+
+  <a href="/home/"><input type="button"  value="submit"/></a>
+  <br><br>
+  
+  
+  
+</form>  {% endcomment %}

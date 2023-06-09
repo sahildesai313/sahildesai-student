@@ -35,3 +35,4 @@ class Grocery_details(models.Model):
 
     def _str_(self):
       return f"{self.Grocery_name}{self.Grocery_price}{self.Grocery_description}"
+    
