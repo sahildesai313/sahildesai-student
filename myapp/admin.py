@@ -28,3 +28,5 @@ admin.site.register(Grocery_details,Grocery_detailsAdmin)
 class Package_Details(admin.ModelAdmin):
     list_display = ("package_name","admin_image","package_image","no_of_day","package_description","package_price")
 admin.site.register(Package_details,Package_Details)
+
+
