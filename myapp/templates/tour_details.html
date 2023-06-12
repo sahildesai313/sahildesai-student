@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            package details
+        </title>
+    </head>
+    <style>
+        .main{
+            
+            margin:100px ;
+            padding:50px;
+            background-color:gray;
+            text-align:center;
+            display:flex;
+        }
+        .details{
+            
+            text-align:center;
+            border:black;
+            background-color:white;
+        }
+        
+        input{
+            border:solid black 2px;
+            padding:10px;
+            background-color:red;
+        }
+        a {
+          background-color: #a61e4d;
+          color: #eee;
+          padding: 15px 25px;
+          text-decoration: none;
+        }
+        
+        a: hover {
+          background-color: #d6336c;
+        }
+    </style>
+    <body>
+        <h1 style="text-align:center;background-color:gray;margin:100px;padding:20px;"
+        >{{item.package_name}}</h1>
+        <div class="main" >
+
+           
+           <div class="details">
+            {% comment %} <img src="/media/{{item.package_image}}" width:100px;> {% endcomment %}
+                <p><b>{{item.package_name}}</b></p>
+                <img src="{{item.package_image.url}}" width:100px;>
+               <p><b>DAY :</b> {{ item.no_of_day}}</p><br>
+               <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISCRIPTIONS :</b> {{ item.package_description }}</p><br>
+               <p><b>Price :</b> {{ item.package_price }}</p>
+               
+               <div class="field">
+              <a href="/booking">BOOK NOW</a>
+
+             </div>
+           </div>
+        <div>
+    </body>
+</html> 
+
