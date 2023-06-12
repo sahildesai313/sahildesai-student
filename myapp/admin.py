@@ -33,3 +33,4 @@ admin.site.register(Package_details,Package_Details)
 class Medicin_detailsAdmin(admin.ModelAdmin):
     list_display = ("Medicin_name","Medicin_image","Do_description", "Medicin_price")
 admin.site.register(Medicin_details, Medicin_detailsAdmin)
+

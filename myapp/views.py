@@ -6,34 +6,26 @@ from django.template import loader
 
 
 
-
 def profile(request):
     if "username" not in request.session:
         return redirect("login")
     if request.method == "POST":
-
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
         phone = request.POST.get('phone')
-
         try:
-            mymember = UserDetail.objects.get(
-                username=request.session["username"])
-
-            newfname = firstname
-            newlname = lastname
-            newphone = phone
-            mymember.firstname = newfname
-            mymember.lastname = newlname
-            mymember.phone = newphone
+            mymember = UserDetail.objects.get(username=request.session["username"])
+            mymember.firstname = firstname
+            mymember.lastname = lastname
+            mymember.phone = phone
             mymember.save()
 
-            return redirect('/home')
+            return redirect('home')
         except UserDetail.DoesNotExist:
             return redirect('/login')
-    user_data = UserDetail.objects.get(username=request.session["username"])
-    return render(request, "profile.html", context={"mymember": user_data})
-
+    else:
+        user_data = UserDetail.objects.get(username=request.session["username"])
+        return render(request, "profile.html", context={"mymember": user_data})
 
 def login(request):
     context = {}
@@ -156,3 +148,4 @@ def medical (request,id):
         'play':play,
     } 
     return HttpResponse (template.render(context,request))
+
