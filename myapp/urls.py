@@ -13,5 +13,6 @@ urlpatterns = [
     path('home/',views.homepage,name='home'),
     path('home/rest_detail/<int:image_id>/',views.rest,name='rest'),
      path('home/grocery_details/<int:image_id>/',views.grocery,name='grocery'),
+     path('tour/<int:id>/',views.tour,name='tour'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
