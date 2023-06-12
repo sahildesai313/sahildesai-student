@@ -50,3 +50,20 @@ class Package_details(models.Model):
     
     def admin_image(self):
         return mark_safe('<img src="{}" width="150"/>'.format(self.package_image.url))
+    
+
+class Medicin_details(models.Model):
+    Medicin_name =models.CharField(max_length=100)
+    Medicin_image=models.ImageField(upload_to="images")
+    Do_description =models.TextField(default="")
+    Medicin_price=models.IntegerField(default="")
+
+    def __str__(self):
+        return f"{self.Medicin_name}{self.Medicin_image}{self.Do_description}{self.Medicin_price}"
+
+    def admin_image(self):
+        return mark_safe('<img src="{}" width="150"/>'.format(self.Medicin_image.url))
+    
+
+
+    
