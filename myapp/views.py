@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UserDetail, resturants_details,Grocery_details
+from .models import UserDetail, resturants_details,Grocery_details,Medicin_details
 from django.contrib import messages
 from django.template import loader
 
@@ -118,7 +118,8 @@ def homepage(request):
         return redirect("login")
     data = resturants_details.objects.all()
     datas=Grocery_details.objects.all()
-    return render(request, 'home.html',context={'data':data,'datas':datas})
+    apps = Medicin_details.objects.all()
+    return render(request, 'home.html',context={'data':data,'datas':datas,'apps':apps})
 
 def rest(request, image_id):
 
@@ -135,8 +136,20 @@ def grocery(request,image_id):
     value=Grocery_details.objects.get(id=image_id)
     template = loader.get_template('grocery_details.html')
     context = {
-    'value':value,
- 
-}
+        'value':value,
+    }
     return HttpResponse(template.render(context,request))
+
+    
+def medical (request,id):
+    play = Medicin_details.objects.get(id=id)
+    template = loader.get_template('medicine_details.html')
+    context={
+        'play':play,
+    } 
+    return HttpResponse (template.render(context,request))
+
+def booking(request):
+    return render(request,'hello.html')
+
 

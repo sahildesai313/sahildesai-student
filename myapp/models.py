@@ -1,6 +1,6 @@
 from django.db import models
-
-
+from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
 class UserDetail(models.Model):
     username = models.CharField(max_length=100)
     firstname = models.CharField(max_length=100)
@@ -35,3 +35,17 @@ class Grocery_details(models.Model):
 
     def _str_(self):
       return f"{self.Grocery_name}{self.Grocery_price}{self.Grocery_description}"
+
+
+class Medicin_details(models.Model):
+    Medicin_name =models.CharField(max_length=100)
+    Medicin_image=models.ImageField(upload_to="images")
+    Do_description =models.TextField(default="")
+    Medicin_price=models.IntegerField(default="")
+
+    def __str__(self):
+        return f"{self.Medicin_name}{self.Medicin_image}{self.Do_description}{self.Medicin_price}"
+
+    def admin_image(self):
+        return mark_safe('<img src="{}" width="150"/>'.format(self.Medicin_image.url))
+   

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserDetail, resturants_details,Grocery_details
+from .models import UserDetail, resturants_details,Grocery_details,Medicin_details
 
 
 class UserDetailAdmin(admin.ModelAdmin):
@@ -23,3 +23,11 @@ admin.site.register(resturants_details, rest_details)
 class Grocery_detailsAdmin(admin.ModelAdmin):
     list_display=("Grocery_name","Grocery_price","Grocery_description")
 admin.site.register(Grocery_details,Grocery_detailsAdmin)
+
+
+
+class Medicin_detailsAdmin(admin.ModelAdmin):
+    list_display = ("Medicin_name","Medicin_image","Do_description", "Medicin_price")
+admin.site.register(Medicin_details, Medicin_detailsAdmin)
+
+

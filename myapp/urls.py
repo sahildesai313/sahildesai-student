@@ -12,6 +12,9 @@ urlpatterns = [
     path('reg/',views.register,name='register'),
     path('home/',views.homepage,name='home'),
     path('home/rest_detail/<int:image_id>/',views.rest,name='rest'),
-     path('home/grocery_details/<int:image_id>/',views.grocery,name='grocery'),
+    path('home/grocery_details/<int:image_id>/',views.grocery,name='grocery'),
+    path('home/medical/<int:id>/',views.medical,name='medical'),
+    path('booking/',views.booking,name='booking'),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
