@@ -2,42 +2,123 @@
 
 <html lang="en" dir="ltr">
 
-<head>
-  {%load static %}
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+  * {
+    margin: 0;
+    padding: 0
+}
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% comment %}
-  <link rel="stylesheet" href="{% static 'mystyle.css' %}"> {% endcomment %}
-  {% comment %} <img rel="stylesheet" href="{% static 'images/image1.jpg' %}"> {% endcomment %}
-  <title>Login Form Design | CodeLab</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+body {
+    background-color:#ccc
+}
 
+.wrapper {
+    margin: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    text-align: center;
+    padding: 100px;
+}
+
+.image img {
+    transition: all 0.5s
+}
+
+.card:hover .image img {
+    transform: scale(1.5)
+}
+
+.filed {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%
+}
+
+.name {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.field {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.field1 {
+    font-size: 12px
+}
+
+
+.follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444
+}
+
+
+.text span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500
+}
+
+.icons i {
+    font-size: 19px
+}
+
+hr .new1 {
+    border: 1px solid
+}
+
+.join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold
+}
+
+.date {
+    background-color: #ccc
+}
+.title{
+  font-size: x-large;
+  background-color:#ccc ;
+}
+</style>
 <body>
 
   <div class="wrapper">
     <div class="title">
       UPDATE PROFILE
-    </div>
-    <form method="post" action="{% url 'forgot' %}">
+      <br><br><br>
+    </div><br><br>
+    <form method="post" action="{% url 'profile' %}">
       {% csrf_token %}
 
       <div class="field">
-        <input type="text" id="number" name='firstname'   value={{mymember.firstname}} required>
         <label>firstname </label>
+        <input type="text" id="number" name='firstname'   value={{mymember.firstname}} required>
+        
+        <br><br>
       </div>
       <div class="field">
-        <input type="text" name='lastname'   value={{mymember.lastname}} required>
         <label>lastname</label>
+        <input type="text" name='lastname'   value={{mymember.lastname}} required>
+       
+        <br><br>
       </div>
       <div class="field">
+        <label>phone</label>&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" name='phone' id="phone"  value={{mymember.phone}} required>
-        <label>phone</label>
+      
+        <br><br>
       </div>
 
-      <div class="field">
+      <div class="btn">
         <input type="submit" value="UPDATE">
       </div>
       
@@ -46,3 +127,5 @@
 </body>
 
 </html>
+
+

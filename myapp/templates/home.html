@@ -233,7 +233,43 @@
         </section>
     
             
-    
+        <section style="background:#EBE3D4">
+            <div class="rows pad-bot-redu tb-space">
+                <div class="container">
+                    <!-- TITLE & DESCRIPTION -->
+                    <div class="spe-title">
+                        <h2>Best  <span>MEDICAL CENTER</span></h2>
+                        <div class="title-line">
+                            <div class="tl-1"></div>
+                            <div class="tl-2"></div>
+                            <div class="tl-3"></div>
+                        </div>
+                        <p>Keep Calm And Stay Healthy.</p>
+                    </div> 
+                        <!-- TOUR PLACE 1 -->
+                        {% for x in apps %}
+                        <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow slideInUp" data-wow-duration="0.5s">
+                            <!-- <div class="band"> <img src="https://rn53themes.net/themes/demo/travelz/images/band.png" alt="" /> </div> -->
+                            <div class="v_place_img"> <img src="{{x.Medicin_image.url}}" alt="Medical Booking" title="Medical Booking"  style="height: 264px;" /> </div> 
+                           
+                                <div class="b_pack rows">
+                                <!-- TOUR TITLE -->
+                                    <div class="col-md-8 col-sm-8">
+                                        <h4><a href="/home/medical/{{x.id }}">{{ x.Medicin_name }}</a></h4>
+                                   
+                                    </div> 
+                                    <!-- TOUR ICONS -->
+                                    
+                                </div>
+                                
+                           
+                            <!-- TOUR TITLE & ICONS -->
+                           
+                        </div>
+                        {% endfor %}      
+                </div>    
+            </div>
+        </section>
     
     
     

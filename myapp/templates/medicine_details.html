@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    </head>
+    <style>
+        body {
+            background: linear-gradient(90deg, #c1c4c9, #72acc7);		
+        }
+        .main{
+            
+            margin:100px ;
+            padding:50px;
+            background-color:gray;
+            text-align:center;
+            display:flex;
+        }
+        .details{
+            
+            text-align:center;
+            background-color:rgb(218, 214, 214);
+        }
+        
+        input{
+            padding:10px;
+            background-color:red;
+        }
+        a {
+          background-color: #a61e4d;
+          color: #eee;
+          padding: 15px 25px;
+          text-decoration: none;
+        }
+        
+        a:hover {
+          background-color: #d6336c;
+        }
+    </style>
+  
+    
+     <body>
+        <h1 style="text-align:center;background-color:rgb(179, 134, 170);margin:40px;padding:20px;"
+        ><p style="color:rgb(40, 20, 106);">{{ play.Medicin_name }}</p></h1>
+    
+        
+            <div class="main" >
+            
+           
+                <div class="details">
+                    <img src="{{play.Medicin_image.url}}" width="200">
+                    <p><b style="color:rgba(120, 17, 17, 0.801);">DISCRIPTIONS :</b> {{ play.Do_description }}</p><br>
+                    <p><b style="color:rgb(120, 26, 33);">PRICE :</b> {{ play.Medicin_price }}</p><br>
+                    <div class="field">
+                    <a href="/booking">BOOK NOW</a>
+                </div>
+            </div>
+
+            
+    </body> 
+
+</html>
+
+ 
